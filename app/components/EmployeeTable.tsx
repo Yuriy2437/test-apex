@@ -832,9 +832,17 @@ const inputStyle = {
   boxSizing: 'border-box' as const,
 };
 
+// const emailInputStyle = {
+//   ...inputStyle,
+//   width: '125%', // шире обычного поля на 25%
+// };
+
 const emailInputStyle = {
   ...inputStyle,
-  width: '125%', // шире обычного поля на 25%
+  width: '70%', // теперь ширина инпута E-mail составляет 70% от ширины ячейки
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  display: 'block',
 };
 
 const deleteBtnStyle = {
