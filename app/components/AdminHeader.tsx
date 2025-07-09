@@ -51,7 +51,7 @@ export default function AdminHeader({ company }: { company: string }) {
             cursor: 'pointer',
           }}
         >
-          Register Employees
+          Save Employees
         </button>
       </div>
     </div>

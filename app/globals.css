@@ -7,7 +7,7 @@ body {
 }
 
 /* Адаптивность для мобильных устройств */
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .admin-container {
     margin: 0.5rem 0.2rem !important;
   }
@@ -37,6 +37,53 @@ body {
   }
   input {
     font-size: 0.9rem !important;
+    width: 90% !important;
+  }
+  button {
+    font-size: 0.95rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+} */
+
+/* Скрыть мобильную таблицу по умолчанию, показать на мобилках */
+.employee-mobile-list {
+  display: none;
+}
+.desktop-table {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .employee-mobile-list {
+    display: block;
+  }
+  .desktop-table {
+    display: none;
+  }
+  .admin-container {
+    margin: 0.5rem 0.2rem !important;
+  }
+  .admin-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 1rem 0.5rem 0.5rem 0.5rem !important;
+  }
+  .admin-header h2 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .admin-header > div {
+    gap: 0.5rem !important;
+  }
+  table {
+    font-size: 0.95rem !important;
+  }
+  th,
+  td {
+    padding: 0.3rem !important;
+  }
+  input {
+    font-size: 0.95rem !important;
     width: 90% !important;
   }
   button {
