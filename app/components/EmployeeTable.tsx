@@ -71,12 +71,22 @@ export default function EmployeeTable({ company }: { company: string }) {
   return (
     <div className='admin-container' style={{ margin: '2rem 3rem' }}>
       {/* Desktop table */}
-      <div className='employee-table-wrapper desktop-table'>
+      <div
+        className='employee-table-wrapper desktop-table'
+        style={{
+          borderRadius: '10px',
+          border: '1px solid #FFD700',
+          background: 'rgba(0,0,0,0.1)',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Заголовок таблицы */}
         <table
           style={{
             width: '100%',
             borderCollapse: 'collapse',
             background: 'transparent',
+            tableLayout: 'fixed',
           }}
         >
           <thead>
@@ -89,57 +99,77 @@ export default function EmployeeTable({ company }: { company: string }) {
               <th style={stickyThStyle}>Удалить</th>
             </tr>
           </thead>
-          <tbody>
-            {employees.map((emp, idx) => (
-              <tr key={emp._id || idx}>
-                <td style={tdStyle}>{idx + 1}</td>
-                <td style={tdStyle}>
-                  <input
-                    value={emp.firstName}
-                    onChange={(e) =>
-                      handleChange(idx, 'firstName', e.target.value)
-                    }
-                    style={inputStyle}
-                  />
-                </td>
-                <td style={tdStyle}>
-                  <input
-                    value={emp.lastName}
-                    onChange={(e) =>
-                      handleChange(idx, 'lastName', e.target.value)
-                    }
-                    style={inputStyle}
-                  />
-                </td>
-                <td style={tdStyle}>
-                  <input
-                    value={emp.position}
-                    onChange={(e) =>
-                      handleChange(idx, 'position', e.target.value)
-                    }
-                    style={inputStyle}
-                  />
-                </td>
-                <td style={tdStyle}>
-                  <input
-                    value={emp.email}
-                    onChange={(e) => handleChange(idx, 'email', e.target.value)}
-                    style={inputStyle}
-                  />
-                </td>
-                <td style={tdStyle}>
-                  <button
-                    onClick={() => handleDelete(emp._id!)}
-                    className='employee-delete-btn'
-                    style={deleteBtnStyle}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
         </table>
+        {/* Прокручиваемое тело таблицы */}
+        <div
+          style={{
+            maxHeight: '70vh',
+            overflowY: 'auto',
+            width: '100%',
+          }}
+        >
+          <table
+            style={{
+              width: '100%',
+              borderCollapse: 'collapse',
+              background: 'transparent',
+              tableLayout: 'fixed',
+            }}
+          >
+            <tbody>
+              {employees.map((emp, idx) => (
+                <tr key={emp._id || idx}>
+                  <td style={tdStyle}>{idx + 1}</td>
+                  <td style={tdStyle}>
+                    <input
+                      value={emp.firstName}
+                      onChange={(e) =>
+                        handleChange(idx, 'firstName', e.target.value)
+                      }
+                      style={inputStyle}
+                    />
+                  </td>
+                  <td style={tdStyle}>
+                    <input
+                      value={emp.lastName}
+                      onChange={(e) =>
+                        handleChange(idx, 'lastName', e.target.value)
+                      }
+                      style={inputStyle}
+                    />
+                  </td>
+                  <td style={tdStyle}>
+                    <input
+                      value={emp.position}
+                      onChange={(e) =>
+                        handleChange(idx, 'position', e.target.value)
+                      }
+                      style={inputStyle}
+                    />
+                  </td>
+                  <td style={tdStyle}>
+                    <input
+                      value={emp.email}
+                      onChange={(e) =>
+                        handleChange(idx, 'email', e.target.value)
+                      }
+                      style={inputStyle}
+                    />
+                  </td>
+                  <td style={tdStyle}>
+                    <button
+                      onClick={() => handleDelete(emp._id!)}
+                      className='employee-delete-btn'
+                      style={deleteBtnStyle}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
       {/* Mobile list */}
       <div className='employee-mobile-list'>
